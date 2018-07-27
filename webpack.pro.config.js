@@ -4,20 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const env = process.env.NODE_ENV; 
 
 module.exports = {
-    entry: [
-        "babel-polyfill",
-        path.join(__dirname, './src/entry/main.js')
-    ],
+    entry: [path.join(__dirname, './src/entry/main.js')],
     output: {
         path: path.join(__dirname, './dist'),
         filename:'js/[hash:8].[name].min.js',
         chunkFilename:'js/[hash:8].[id].min.js'
     },
-    watch: true,
+    // watch: true,
     devtool: '#source-map',
     resolve:{
         extensions:['.js', '.vue','.css', '.png', '.jpg'],
@@ -39,6 +37,7 @@ module.exports = {
             __UAT__: env === 'uat',
             __PROD__: env === 'prod'
         }),
+        new CleanWebpackPlugin(['dist']),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
@@ -55,7 +54,7 @@ module.exports = {
                 sourceMap: true
             }),
             new OptimizeCSSAssetsPlugin({
-                cssProcessorOptions: { safe: true, map: { inline: false } }
+                cssProcessorOptions: { map: { inline: false } }
             })
         ],
         splitChunks: {

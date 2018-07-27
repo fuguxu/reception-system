@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <i class="el-icon-success"></i>
-        接待系统
+    <div class="test">
+        接待系统 你好 你说好不好
     </div>
 </template>
 <script>
@@ -13,3 +12,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+    .test{
+        color:blue;
+    }
+</style>

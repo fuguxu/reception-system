@@ -8,7 +8,6 @@ const env = process.env.NODE_ENV;
 
 module.exports = {
     entry: [
-        "babel-polyfill",
         path.join(__dirname, './src/entry/main.js')
     ],
     output: {
@@ -58,7 +57,6 @@ module.exports = {
         }),
     ],
     optimization: {//webpack4.0打包相同代码配置
-        // minimizer: true,
         splitChunks: {
             cacheGroups: {
                 commons: {
