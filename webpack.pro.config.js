@@ -9,7 +9,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const env = process.env.NODE_ENV; 
 
 module.exports = {
-    entry: [path.join(__dirname, './src/entry/main.js')],
+    entry: {
+        main:path.join(__dirname, './src/entry/main.js'),
+        core: ['vue','vue-router','vue-i18n']
+    },
     output: {
         path: path.join(__dirname, './dist'),
         filename:'js/[hash:8].[name].min.js',
@@ -28,7 +31,7 @@ module.exports = {
             chunksSortMode:'dependency',
             favicon:path.join(__dirname, './src/img/favicon.ico'),
             inject:'body',
-            chunks:['main','vendor']
+            chunks:['main','core']
         }),
         new webpack.DefinePlugin({
             __LOCAL__: env === 'local',
@@ -45,6 +48,9 @@ module.exports = {
             filename: 'css/[hash:8].[name].min.css',
             allChunks: true
         }),
+        new webpack.ProvidePlugin({
+            Vue:'vue' // 下载vue
+        })
     ],
     optimization: {
         minimizer: [
@@ -59,6 +65,11 @@ module.exports = {
         ],
         splitChunks: {
             cacheGroups: {
+                core:{
+                    chunks:'initial',
+                    name:'core',
+                    enforce:true
+                },
                 commons: {
                     chunks: 'all',
                     minChunks: 2,

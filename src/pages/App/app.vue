@@ -23,10 +23,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    #app-main{
+        height:100%;
+    }
     .main-container{
         width:1120px;
         margin:30px auto;
-        min-height: 700px;
+        min-height: 100%;
         background: #fff;
     }
 </style>
