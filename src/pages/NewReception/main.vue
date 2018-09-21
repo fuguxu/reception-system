@@ -29,7 +29,6 @@ export default {
     },
     mounted(){
         this.getData();
-        console.log(Bus)
     },
     watch:{
         e: [

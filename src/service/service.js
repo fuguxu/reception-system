@@ -17,25 +17,27 @@ const TIME_OUT=50000;
 
 const mip_base_prefix = "http://imipdev.midea.com";
 
-const mip_base_url=`${mip_base_prefix}/mip`
-
 const base_axios_options = {
     withCredentials: true,
     timeout: TIME_OUT,
     headers: { 'content-type': 'application/json' }
 };
 
+//mip模块相关接口
+const mip_base_url=`${mip_base_prefix}/mip`
 const mipAxios = axios.create(Object.assign({}, {baseURL: mip_base_url }, base_axios_options));
+export const mipModuleApi=makeFetch(mipAxios);
 
-export const mipModuleApi={
-    get(url,params){
-        return mipAxios.get(url,{params:params}).then(res=>res.data)
-    },
-    post(url,params){
-        return mipAxios.post(url,params).then(res=>res.data)
+
+
+function makeFetch(moduleAxios){
+    return {
+        get(url,params){
+            return moduleAxios.get(url,{params:params}).then(res=>res.data)
+        },
+        post(url,params){
+            return moduleAxios.post(url,params).then(res=>res.data)
+        }
     }
 }
-
-
-
 
