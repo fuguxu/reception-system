@@ -14,6 +14,6 @@ export default {
 </script>
 <style lang="scss" scoped>
     #app-reception{
-        height: 100%;
+        // height: 100%;
     }
 </style>

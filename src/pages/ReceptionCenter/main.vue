@@ -1,7 +1,7 @@
 <template>
     <div class="test">
-        接待系统 你好
-        <!-- <el-input v-model="e.f.g"></el-input> -->
+        接待中心 <br />
+        <a href="#/r/create_reception" target="_blank">新建接待</a>
     </div>
 </template>
 <script>
