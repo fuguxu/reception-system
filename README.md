@@ -1,7 +1,5 @@
 #项目描述
-美的接待系统。
-项目成员：付光学
-负责人：曹涛
+vue2.0 vuex  node.js webpack
 
 #构建项目
 
@@ -47,6 +45,5 @@ https://www.npmjs.com/package/crypto-js
 http://element-cn.eleme.io/1.4/#/zh-CN/component/installation
 
 #备注
-webstorm webpack经常不能自动热更新问题：webstrom settings的system settings默认勾选‘safewrite’,勾选去掉就可以了,
-此项目使用了webpack4.0来构建了
+
 
