@@ -81,6 +81,13 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
+                options:{
+                    modules: true,
+                    cssModules: {
+                        localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                        camelCase: true
+                    },
+                }
             },
             {
                 test: /\.js$/,
@@ -90,11 +97,67 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['css-hot-loader',MiniCssExtractPlugin.loader,"css-loader"]
+                oneOf:[
+                    {
+                        resourceQuery: /module/,
+                        use: [
+                            'css-hot-loader',MiniCssExtractPlugin.loader,
+                            {
+                                loader: "css-loader",
+                                options: {
+                                    modules: true,
+                                    cssModules: {
+                                        localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                                        camelCase: true
+                                    },
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        use:['css-hot-loader',MiniCssExtractPlugin.loader,"css-loader"]
+                    }
+                ],
             },
             {
                 test: /\.(scss|sass)$/,
-                use: ['css-hot-loader',MiniCssExtractPlugin.loader,"css-loader", 'postcss-loader', 'sass-loader']
+                use: [
+                    'css-hot-loader',
+                    MiniCssExtractPlugin.loader,
+                    // 'vue-style-loader',
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: true,
+                        //     cssModules: {
+                        //         localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                        //         camelCase: true
+                        //     },
+                        }
+                    }, 
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            modules: true,
+                            // cssModules: {
+                            //     localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                            //     camelCase: true
+                            // },
+                        }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            modules: true,
+                            // cssModules: {
+                            //     localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                            //     camelCase: true
+                            // },
+                        }
+                    },
+                    // 'postcss-loader', 
+                    // 'sass-loader'
+                ]
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)(\?.*)?$/,

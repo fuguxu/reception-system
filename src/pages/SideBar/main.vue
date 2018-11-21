@@ -1,8 +1,8 @@
 <template>
-    <div class="side-bar">
+    <div :class="$style['side-bar']">
         <ul>
             <li v-for="(item,index) in muens" :key="index">
-                <router-link :to="item.path">{{item.name}}</router-link>
+                <router-link  :to="item.path">{{item.name}}</router-link>
             </li>
         </ul>
     </div>
@@ -25,7 +25,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" module>
     .side-bar{
         width:200px;
         li a{
@@ -35,10 +35,13 @@ export default {
             display: inline-block;
             width:100%;
             box-sizing: border-box;
-            &.router-link-active,&:hover{
-                background-color: rgba(20, 142, 245, 0.05);
-                color:#000;
-            }
+            
         }
+    }
+</style>
+<style scoped>
+    a.router-link-active,a:hover{
+        background-color: rgba(20, 142, 245, 0.05);
+        color:#000;
     }
 </style>

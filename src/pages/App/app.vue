@@ -1,7 +1,7 @@
 <template>
     <div id="app-main">
         <headerBar></headerBar>
-        <section class="main-container">
+        <section :class="$style['main-container']">
             <router-view></router-view>
         </section>
         <footerBar></footerBar>
@@ -22,7 +22,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" module>
     #app-main{
         // height:100%;
     }

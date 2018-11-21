@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(router => {
-   
+    window.scrollTo(0,0);
 });
 
 export default router;

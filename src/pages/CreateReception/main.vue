@@ -9,6 +9,10 @@ export default {
         return {
             
         }
+    },
+    mounted(){
+        console.log(this.$store.state.counter.fileListSelect);
+        alert(this.$store.state.counter.fileListSelect)
     }
 }
 </script>

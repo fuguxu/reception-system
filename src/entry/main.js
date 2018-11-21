@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import App from '../app/main.vue';
 import router from '../router/router';
+import store from '../store/store';
 import ElementUI from '../lib/el/main';
 import  '../css/base.css';
 import AppUtil from '../util/main';
@@ -14,6 +15,7 @@ window.Bus=global.Bus=new Vue();
 
 new Vue({
     router:router,
+    store,
     render: h => h(App),
 }).$mount('#app');
 

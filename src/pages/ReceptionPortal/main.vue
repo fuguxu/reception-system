@@ -1,9 +1,9 @@
 <template>
-    <div class="reception-portal clearfloat">
+    <div class="clearfloat" :class="$style['reception-portal']">
         <div class="side-bar-content left">
             <SideBar></SideBar>
         </div>
-        <div class="portal-content left">
+        <div class="left" :class="$style['portal-content']">
             <router-view></router-view>
         </div>
     </div>
@@ -21,13 +21,10 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" module>
     .reception-portal{
         background: #f9f9f9;
         min-height: 600px;
-    }
-    .side-bar-content{
-        // height:100%;
     }
     .portal-content{
         background: #fff;
