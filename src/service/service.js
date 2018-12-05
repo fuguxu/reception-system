@@ -15,7 +15,7 @@ axios.defaults.validateStatus=(status)=>{
 
 const TIME_OUT=50000;
 
-const mip_base_prefix = "http://imipdev.midea.com";
+const mip_base_prefix = `http://localhost:8001`;
 
 const base_axios_options = {
     withCredentials: true,
@@ -24,7 +24,7 @@ const base_axios_options = {
 };
 
 //mip模块相关接口
-const mip_base_url=`${mip_base_prefix}/mip`
+const mip_base_url=`${mip_base_prefix}`
 const mipAxios = axios.create(Object.assign({}, {baseURL: mip_base_url }, base_axios_options));
 export const mipModuleApi=makeFetch(mipAxios);
 

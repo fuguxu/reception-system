@@ -1,6 +1,6 @@
 <template>
-    <section class="app-footer">
-        <div class="g-wrap">
+    <section :class="$style['app-footer']">
+        <div :class="$style['g-wrap']">
             <div class="logo">
             </div>
         </div>
@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
     .app-footer{
         background: #292e41;
         height: 62px;

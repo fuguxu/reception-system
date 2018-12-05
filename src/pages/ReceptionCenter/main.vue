@@ -3,8 +3,21 @@
         接待中心 <br />
         <a @click="handlerRouter" href="#/r/create_reception" target="_blank">新建接待</a>
         <br />
-        <input class="containers left" type="number" name="containers" v-model="containers" placeholder="">
-        <el-input v-model="containers"></el-input>
+        <!-- <input class="containers left" type="number" name="containers" v-model="containers" placeholder="请输入"> -->
+        <el-input v-model="form.name" placeholder="请输入name"></el-input>
+        <el-input v-model="form.age" placeholder="请输入age"></el-input>
+        <el-button @click="add" type="primary">增加数据</el-button><br /><br />
+        <ul>
+            <li v-for="(item,index) in nodeDate" :key="index">
+                <span>
+                    <el-input :readonly="!item.edit" v-model="item.name"></el-input>
+                    <el-input :readonly="!item.edit" v-model="item.age"></el-input>
+                </span>
+                <span style="cursor:pointer" @click="dele(item)">删除</span>
+                <span style="cursor:pointer" v-if="!item.edit" @click="edit(item)">编辑</span>
+                <span style="cursor:pointer" v-else @click="save(item)">保存</span>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -17,28 +30,51 @@ export default {
                    g:8
                }
            },
-           containers:1
+           form:{
+               name:'',
+               age:'',
+               time:new Date()
+           },
+           nodeDate:[]
         }
     },
     methods:{
         async getData(){
-            try{
-                // var data=await mipModuleApi.get(`/sys/org/getPersonByUid`,{uId:'ex_fugx'});
-                // console.log(data)
-            } catch(err){
-                // console.log(err.message)
+            var data=await mipModuleApi.post(`/findMovie`);
+            this.nodeDate=(data||[]).map(item=>{
+                return Object.assign({},item,{edit:false})
+            });
+        },
+        async dele(item){
+            var data=await mipModuleApi.post(`/deleMovie`,item);
+            if(data.success){
+                this.getData();
+            }
+        },
+        async add(){
+            var data=await mipModuleApi.post(`/addMovie`,this.form);
+            if(data.success){
+                this.getData();
+            }
+        },
+        edit(item){
+            item.edit=true;
+        },
+        async save(item){
+            var data=await mipModuleApi.post(`/updateMovie`,item);
+            if(data.success){
+                this.getData();
             }
         },
         handlerRouter(){
-            console.log(222)
             this.$store.commit('counter/FILE_LIST_SELECT','点击改变一个值看看');
         }
     },
     mounted(){
         this.getData();
-        this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变')
-        console.log(this.$store.state.counter.fileListSelect);
-        console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
+        // this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变')
+        // console.log(this.$store.state.counter.fileListSelect);
+        // console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
     },
     watch:{
         e: [
@@ -55,6 +91,8 @@ export default {
 <style lang="scss" module>
     .test{
         color:blue;
+        font-size:20px;
+        font-weight: bold;
     }
     
 </style>

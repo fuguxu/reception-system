@@ -1,7 +1,8 @@
 <template>
-    <section class="app-header">
-        <div class="g-wrap">
+    <section :class="$style['app-header']">
+        <div :class="$style['g-wrap']">
             <div class="logo">
+                我是头部
             </div>
         </div>
     </section>
@@ -16,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
     .app-header{
         background: #292e41;
         height: 62px;
