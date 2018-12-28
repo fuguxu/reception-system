@@ -6,8 +6,15 @@ import store from '../store/store';
 import ElementUI from '../lib/el/main';
 import  '../css/base.css';
 import AppUtil from '../util/main';
+import VueSocketio from 'vue-socket.io';
+// import socketio from 'socket.io-client';
 
 Vue.prototype.AppUtil=AppUtil;
+
+Vue.use(new VueSocketio({
+    debug: true,
+    connection: 'http://localhost:8001',
+})); 
 
 Vue.use(ElementUI);
 
