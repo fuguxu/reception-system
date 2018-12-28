@@ -18,54 +18,54 @@ const routesMap=[
         path:'/',
         component:app,
         redirect:'/r',
-        name:'接待系统',
+        name:'studySys',
         children:[
             {
                 path:'/r',
                 redirect:'/r/reception_center',
                 component:ReceptionPortal,
-                name:'接待门户',
+                name:'study protal',
                 children:[
                     {
                         path:'/r/reception_center',
                         component:ReceptionCenter,
-                        name:'接待中心',
+                        name:'node crud',
                         meta:{
                             leftMuen:true,
                             muenIndex:0
                         }
                     },
-                    {
-                        path:'/r/my_reception',
-                        component:MyReception,
-                        name:'我的接待',
-                        meta:{
-                            leftMuen:true,
-                            muenIndex:0
-                        }
-                    },
-                    {
-                        path:'/r/pending_reception',
-                        component:PendingReception,
-                        name:'待审接待',
-                        meta:{
-                            leftMuen:true,
-                            muenIndex:0
-                        }
-                    },
-                    {
-                        path:'/r/trial_reception',
-                        component:TrialReception,
-                        name:'已审接待',
-                        meta:{
-                            leftMuen:true,
-                            muenIndex:0
-                        }
-                    },
+                    // {
+                    //     path:'/r/my_reception',
+                    //     component:MyReception,
+                    //     name:'我的接待',
+                    //     meta:{
+                    //         leftMuen:true,
+                    //         muenIndex:0
+                    //     }
+                    // },
+                    // {
+                    //     path:'/r/pending_reception',
+                    //     component:PendingReception,
+                    //     name:'待审接待',
+                    //     meta:{
+                    //         leftMuen:true,
+                    //         muenIndex:0
+                    //     }
+                    // },
+                    // {
+                    //     path:'/r/trial_reception',
+                    //     component:TrialReception,
+                    //     name:'已审接待',
+                    //     meta:{
+                    //         leftMuen:true,
+                    //         muenIndex:0
+                    //     }
+                    // },
                     {
                         path:'/r/my_attend',
                         component:MyAttend,
-                        name:'需我参与',
+                        name:'node chat room',
                         meta:{
                             leftMuen:true,
                             muenIndex:0
@@ -76,7 +76,7 @@ const routesMap=[
             {
                 path:'r/create_reception',
                 component:CreateReception,
-                name:'新建接待',
+                name:'node new',
             }
         ]
     },

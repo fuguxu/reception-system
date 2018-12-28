@@ -4,7 +4,7 @@
         <div>
             <h3>聊天内容</h3>
             <ul style="min-height:200px;">
-                <li v-for="(item,index) in messageData" :key="index">
+                <li v-for="(item,index) in messageData" :key="index" style="line-height: 15px;padding: 5px;">
                     <span>{{item}}</span>
                 </li>
             </ul>

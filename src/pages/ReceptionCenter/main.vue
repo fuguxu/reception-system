@@ -1,8 +1,5 @@
 <template>
     <div :class="$style.test">
-        接待中心 <br />
-        <a @click="handlerRouter" href="#/r/create_reception" target="_blank">新建接待</a>
-        <br />
         <!-- <input class="containers left" type="number" name="containers" v-model="containers" placeholder="请输入"> -->
         <el-input v-model="form.name" placeholder="请输入name"></el-input>
         <el-input v-model="form.age" placeholder="请输入age"></el-input>

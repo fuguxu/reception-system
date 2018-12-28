@@ -50,7 +50,7 @@ module.exports = {
             template:path.join(__dirname, './src/html/main.html'),
             filename:'main.html',
             chunksSortMode:'dependency',
-            favicon:path.join(__dirname, './src/img/favicon.ico'),
+            // favicon:path.join(__dirname, './src/img/favicon.ico'),
             inject:'body',
             chunks:['main','core']
         }),
