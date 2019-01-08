@@ -7,6 +7,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const threadLoader = require('thread-loader');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const env = process.env.NODE_ENV; 
 threadLoader.warmup({
     // pool options, like passed to loader options
@@ -78,6 +81,7 @@ module.exports = {
             // Required - Routes to render.
             routes: [ '/', '/r/reception_center','/r/my_reception' ],
           }),
+          new BundleAnalyzerPlugin(),
         // new HardSourceWebpackPlugin({
         //     // cacheDirectory是在高速缓存写入。默认情况下，将缓存存储在node_modules下的目录中，因此如 
         //     // 果清除了node_modules，则缓存也是如此
@@ -107,6 +111,11 @@ module.exports = {
         //         // entryChunkMultiplicator: 1, // 默认：1
         //       }
         // )
+        new HappyPack({
+            id:"babel",
+            loaders: ['babel-loader?cacheDirectory'],
+            threadPool:happyThreadPool
+        })
     ],
     optimization: {//webpack4.0打包相同代码配置
         splitChunks: {
@@ -140,7 +149,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: ['babel-loader'],
+                use: ['happypack/loader?id=babel'],
                 include: path.join(__dirname , 'src'),
                 exclude: /node_modules/
             },

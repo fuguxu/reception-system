@@ -11,10 +11,10 @@ import VueSocketio from 'vue-socket.io';
 
 Vue.prototype.AppUtil=AppUtil;
 
-Vue.use(new VueSocketio({
-    debug: true,
-    connection: 'http://localhost:8001',
-})); 
+// Vue.use(new VueSocketio({   //实时通讯 聊天室
+//     debug: true,
+//     connection: 'http://10.73.175.85:8001',
+// })); 
 
 Vue.use(ElementUI);
 
@@ -22,7 +22,7 @@ window.Bus=global.Bus=new Vue();
 
 new Vue({
     router:router,
-    store,
+    // store,
     render: h => h(App),
 }).$mount('#app');
 
