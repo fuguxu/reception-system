@@ -24,11 +24,6 @@ import gbk from '../../util/gbk';
 export default {
     data(){
         return {
-           e:{
-               f:{
-                   g:8
-               }
-           },
            form:{
                name:'',
                age:'',
@@ -104,7 +99,7 @@ export default {
             },
     },
     mounted(){
-        this.getData();
+        // this.getData();
         // this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变')
         // console.log(this.$store.state.counter.fileListSelect);
         // console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
@@ -112,14 +107,7 @@ export default {
         
     },
     watch:{
-        e: [
-            function handle1 (val, oldVal) {
-                console.log(1,val)
-            },
-            function handle2 (val, oldVal) {
-                console.log(2,val)
-             }
-        ],
+        
     }
 }
 </script>

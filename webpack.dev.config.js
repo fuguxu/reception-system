@@ -235,6 +235,8 @@ module.exports = {
                         limit:10000,
                         name:'fonts/[name].[ext]'
                     }
+                },{
+                    loader:'file-loader'
                 }]
             },
         ]

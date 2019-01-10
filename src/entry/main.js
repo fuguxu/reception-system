@@ -2,13 +2,14 @@
 import Vue from 'vue';
 import App from '../app/main.vue';
 import router from '../router/router';
-import store from '../store/store';
+// import store from '../store/store';
 import ElementUI from '../lib/el/main';
 import  '../css/base.css';
 import AppUtil from '../util/main';
 import VueSocketio from 'vue-socket.io';
 // import socketio from 'socket.io-client';
-
+// import es6Promise from 'es6-promise';
+// es6Promise.polyfill();
 Vue.prototype.AppUtil=AppUtil;
 
 // Vue.use(new VueSocketio({   //实时通讯 聊天室

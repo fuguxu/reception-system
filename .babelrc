@@ -1,6 +1,19 @@
 {
-    "presets": ["env"],
+    "presets": [
+        [
+            "env",
+            {
+            "modules": false
+            }
+        ],
+        
+    ],
     "plugins": [
-        "transform-runtime"
-     ]
+        [
+            "transform-runtime",
+            {
+              "polyfill": true
+            }
+        ]
+    ]
 }
