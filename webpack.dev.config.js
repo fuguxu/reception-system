@@ -24,8 +24,8 @@ threadLoader.warmup({
 
 module.exports = {
     entry: {
-        main:path.join(__dirname, './src/entry/main.js'),
-        // core: ['vue','vue-router','vue-i18n']
+        main:['babel-polyfill',path.join(__dirname, './src/entry/main.js')],
+        core: ['vue','vue-router','vue-i18n']
     },
     output: {
         path: path.join(__dirname, './dist'),
@@ -55,7 +55,7 @@ module.exports = {
             chunksSortMode:'dependency',
             // favicon:path.join(__dirname, './src/img/favicon.ico'),
             inject:'body',
-            chunks:['main','core']
+            chunks:['main','core','vendor']
         }),
         new webpack.DefinePlugin({
             __LOCAL__: env === 'local',
@@ -150,8 +150,8 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: ['happypack/loader?id=babel'],
-                include: path.join(__dirname , 'src'),
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                include:[path.join(__dirname , 'src'),path.join(__dirname ,'node_modules/vue-socket.io')]
             },
             {
                 test: /\.css$/,
