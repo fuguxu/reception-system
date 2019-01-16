@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+  "scripts": { 
     "start": "cross-env NODE_ENV=local webpack-dev-server --mode development  --host 0.0.0.0 --config webpack.dev.config.js --progress --colors --inline",
     "dev": "cross-env NODE_ENV=dev webpack --mode production --config webpack.pro.config.js --progress --colors",
     "sit": "cross-env NODE_ENV=sit webpack --mode production --config webpack.pro.config.js --progress --colors",

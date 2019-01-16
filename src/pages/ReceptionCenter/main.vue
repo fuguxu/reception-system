@@ -16,11 +16,13 @@
                 <span style="cursor:pointer" v-else @click="save(item)">保存</span>
             </li>
         </ul>
+        <bus a="a" b="b" @change="changeEvent"></bus>
     </div>
 </template>
 <script>
 import {mipModuleApi} from '../../service/service';
 import gbk from '../../util/gbk';
+import bus from './bus.vue'
 export default {
     data(){
         return {
@@ -33,6 +35,10 @@ export default {
         }
     },
     methods:{
+        changeEvent(value){
+            console.log('change')
+            console.log(value)
+        },
         async getData(){
             var data=await mipModuleApi.post(`/findMovie`);
             this.nodeDate=(data||[]).map(item=>{
@@ -99,15 +105,20 @@ export default {
             },
     },
     mounted(){
-        // this.getData();
-        // this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变')
+        this.getData();
+        this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变').then(res=>{
+            console.log('res',res)
+        })
         // console.log(this.$store.state.counter.fileListSelect);
-        // console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
+        console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
         console.log(gbk().encode('attachment;filename=filename我.xlsx'))
-        
+        this.handlerRouter()
     },
-    watch:{
-        
+    created(){
+        this.changeEvent(22222)
+    },
+    components:{
+        bus
     }
 }
 </script>

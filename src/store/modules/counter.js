@@ -14,7 +14,9 @@ const state = {
   const actions = {
     FILE_LIST_SELECT ({ state, commit, rootState }, value) {
       // do something async
+      console.log('value',value)
       commit('FILE_LIST_SELECT', value)
+      return '9999'
     }
   }
   
