@@ -70,8 +70,10 @@ export default {
             this.$store.commit('counter/FILE_LIST_SELECT','点击改变一个值看看');
         },
         down(){
-                var url ='http://10.17.156.68:17480/userDownload/E8DBE7F8E0F5437C814C7AFADED1F5E7/mip-bucket-test/167f7b94b13ca1f0c695126414599118.xlsx?certification=v10461d5d3403bbae08a8073c51ff8fd3288&OSS-DISPOSITION=';
-                var ext='xlsx'
+                var url ='http://10.17.156.68:17480/userDownload/E8DBE7F8E0F5437C814C7AFADED1F5E7/mip-bucket-test/1687dde6a26671d810a4537455c85cde.png?certification=v1838a3f1d405e6a51a08051439c63335509';
+                var ext='png'
+                // var md5 = require('md5');
+                // console.log(md5('message'));
                var xmlhttp = new XMLHttpRequest();
                xmlhttp.onload=()=>{
                     if (xmlhttp.readyState == 4&&xmlhttp.status==200) {
@@ -86,7 +88,7 @@ export default {
                 // xmlhttp.withCredentials = true;
                 xmlhttp.responseType = "blob";
                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.setRequestHeader("OSS-SIGN", "	2ef8348d00beda512e3ba035386662f5");
+                xmlhttp.setRequestHeader("OSS-SIGN", "644f3c6ca0374645aaa281f8efe3fecc");
                 xmlhttp.setRequestHeader("OSS-DISPOSITION", "wwww."+ext);
                 xmlhttp.send();
             },

@@ -35,15 +35,15 @@ const routesMap=[
                             muenIndex:0
                         }
                     },
-                    // {
-                    //     path:'/r/my_reception',
-                    //     component:MyReception,
-                    //     name:'我的接待',
-                    //     meta:{
-                    //         leftMuen:true,
-                    //         muenIndex:0
-                    //     }
-                    // },
+                    {
+                        path:'/r/my_reception',
+                        component:MyReception,
+                        name:'pdf',
+                        meta:{
+                            leftMuen:true,
+                            muenIndex:0
+                        }
+                    },
                     // {
                     //     path:'/r/pending_reception',
                     //     component:PendingReception,

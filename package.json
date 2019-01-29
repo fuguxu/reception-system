@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "start": "cross-env NODE_ENV=local webpack-dev-server --mode development  --host 0.0.0.0 --config webpack.dev.config.js --progress --colors --inline",
     "dev": "cross-env NODE_ENV=dev webpack --mode production --config webpack.pro.config.js --progress --colors",
     "sit": "cross-env NODE_ENV=sit webpack --mode production --config webpack.pro.config.js --progress --colors",
@@ -32,6 +32,8 @@
     "css-loader": "^1.0.0",
     "es6-promise": "^4.2.5",
     "file-loader": "^1.1.11",
+    "gulp": "^4.0.0",
+    "gulp-uglify": "^3.0.1",
     "happypack": "^5.0.0",
     "hard-source-webpack-plugin": "^0.12.0",
     "html-webpack-plugin": "^3.2.0",
@@ -61,6 +63,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.4",
+    "jspdf": "^1.5.3",
+    "md5": "^2.2.1",
     "socket.io-client": "^2.2.0",
     "vue": "^2.5.16",
     "vue-i18n": "^8.0.0",
