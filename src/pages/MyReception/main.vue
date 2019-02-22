@@ -29,8 +29,8 @@ export default {
         // var doc = new jsPDF();
         // doc.text('Hello world!', 10, 10);
         // doc.save('a4.pdf');
-        var md5 = require('md5');
-        console.log(md5('message'));
+        // var md5 = require('md5');
+        // console.log(md5('message'));
     }
 }
 </script>

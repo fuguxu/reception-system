@@ -17,12 +17,14 @@
             </li>
         </ul>
         <bus a="a" b="b" @change="changeEvent"></bus>
+        <addFunc :num1="5" :num2="7"></addFunc>
     </div>
 </template>
 <script>
 import {mipModuleApi} from '../../service/service';
 import gbk from '../../util/gbk';
-import bus from './bus.vue'
+import bus from './bus.vue';
+import vueNpmStudy from 'vue-npm-study';
 export default {
     data(){
         return {
@@ -120,7 +122,8 @@ export default {
         this.changeEvent(22222)
     },
     components:{
-        bus
+        bus,
+        vueNpmStudy
     }
 }
 </script>
