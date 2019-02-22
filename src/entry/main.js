@@ -8,8 +8,8 @@ import  '../css/base.css';
 import AppUtil from '../util/main';
 import VueSocketio from 'vue-socket.io';//使用后 ie无法打开 猜测无法编译其中语法
 
-import vueNpmStudy from 'vue-npm-study';//自己发布的一个npm包
-console.log(vueNpmStudy)
+import vueNpmStudy from 'vue-npm-study';//自己发布的一个npm包 仿element-ui
+
 Vue.use(vueNpmStudy);
 
 Vue.prototype.AppUtil=AppUtil;

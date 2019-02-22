@@ -6,8 +6,8 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const threadLoader = require('thread-loader');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const env = process.env.NODE_ENV; 
@@ -75,13 +75,13 @@ module.exports = {
         new webpack.ProvidePlugin({
             Vue:'vue' // 下载vue
         }),
-        new PrerenderSPAPlugin({
-            // Required - The path to the webpack-outputted app to prerender.
-            staticDir: path.join(__dirname, 'dist'),
-            // Required - Routes to render.
-            routes: [ '/', '/r/reception_center','/r/my_reception' ],
-          }),
-          new BundleAnalyzerPlugin(),
+        // new PrerenderSPAPlugin({
+        //     // Required - The path to the webpack-outputted app to prerender.
+        //     staticDir: path.join(__dirname, 'dist'),
+        //     // Required - Routes to render.
+        //     routes: [ '/', '/r/reception_center','/r/my_reception' ],
+        //   }),
+        //   new BundleAnalyzerPlugin(),
         // new HardSourceWebpackPlugin({
         //     // cacheDirectory是在高速缓存写入。默认情况下，将缓存存储在node_modules下的目录中，因此如 
         //     // 果清除了node_modules，则缓存也是如此
