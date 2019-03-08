@@ -18,7 +18,7 @@
         </ul>
         <bus a="a" b="b" @change="changeEvent"></bus>
         <addFunc :num1="5" :num2="7"></addFunc>
-        <fuButton></fuButton>    
+        <fuButton></fuButton>
     </div>
 </template>
 <script>
@@ -34,37 +34,37 @@ export default {
                time:new Date()
            },
            nodeDate:[]
-        }
+        };
     },
     methods:{
         changeEvent(value){
-            console.log('change')
-            console.log(value)
+            console.log('change');
+            console.log(value);
         },
         async getData(){
-            var data=await mipModuleApi.post(`/findMovie`);
-            this.nodeDate=(data||[]).map(item=>{
-                return Object.assign({},item,{edit:false})
+            let data = await mipModuleApi.post(`/findMovie`);
+            this.nodeDate = (data || []).map(item=>{
+                return Object.assign({},item,{edit:false});
             });
         },
         async dele(item){
-            var data=await mipModuleApi.post(`/deleMovie`,item);
-            if(data.success){
+            let data = await mipModuleApi.post(`/deleMovie`,item);
+            if (data.success){
                 this.getData();
             }
         },
         async add(){
-            var data=await mipModuleApi.post(`/addMovie`,this.form);
-            if(data.success){
+            let data = await mipModuleApi.post(`/addMovie`,this.form);
+            if (data.success){
                 this.getData();
             }
         },
         edit(item){
-            item.edit=true;
+            item.edit = true;
         },
         async save(item){
-            var data=await mipModuleApi.post(`/updateMovie`,item);
-            if(data.success){
+            let data = await mipModuleApi.post(`/updateMovie`,item);
+            if (data.success){
                 this.getData();
             }
         },
@@ -72,13 +72,13 @@ export default {
             this.$store.commit('counter/FILE_LIST_SELECT','点击改变一个值看看');
         },
         down(){
-                var url ='http://10.17.156.68:17480/userDownload/E8DBE7F8E0F5437C814C7AFADED1F5E7/mip-bucket-test/1687dde6a26671d810a4537455c85cde.png?certification=v1838a3f1d405e6a51a08051439c63335509';
-                var ext='png'
+                let url = 'http://10.17.156.68:17480/userDownload/E8DBE7F8E0F5437C814C7AFADED1F5E7/mip-bucket-test/1687dde6a26671d810a4537455c85cde.png?certification=v1838a3f1d405e6a51a08051439c63335509';
+                let ext = 'png';
                 // var md5 = require('md5');
                 // console.log(md5('message'));
-               var xmlhttp = new XMLHttpRequest();
-               xmlhttp.onload=()=>{
-                    if (xmlhttp.readyState == 4&&xmlhttp.status==200) {
+               let xmlhttp = new XMLHttpRequest();
+               xmlhttp.onload = ()=>{
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         if (xmlhttp.response) {
                             this.hander(xmlhttp.response,ext);
                         } else {
@@ -86,49 +86,49 @@ export default {
                         }
                     }
                 };
-                xmlhttp.open("GET", url,true);
+                xmlhttp.open('GET', url,true);
                 // xmlhttp.withCredentials = true;
-                xmlhttp.responseType = "blob";
-                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.setRequestHeader("OSS-SIGN", "644f3c6ca0374645aaa281f8efe3fecc");
-                xmlhttp.setRequestHeader("OSS-DISPOSITION", "wwww."+ext);
+                xmlhttp.responseType = 'blob';
+                xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                xmlhttp.setRequestHeader('OSS-SIGN', '644f3c6ca0374645aaa281f8efe3fecc');
+                xmlhttp.setRequestHeader('OSS-DISPOSITION', 'wwww.' + ext);
                 xmlhttp.send();
             },
              hander(res,ext){
-                 var a = document.createElement('a');
-                var blob=res;
-                blob = new Blob([blob], {type: 'application/'+ext});
-                var downLoadAllUrl =window.URL.createObjectURL(blob);
-                var eleLink = document.createElement('a');
+                 let a = document.createElement('a');
+                let blob = res;
+                blob = new Blob([blob], {type: 'application/' + ext});
+                let downLoadAllUrl = window.URL.createObjectURL(blob);
+                let eleLink = document.createElement('a');
                 eleLink.style.display = 'none';
                 eleLink.href = downLoadAllUrl;
-                eleLink.setAttribute("downLoad",'haha.'+ext);
+                eleLink.setAttribute('downLoad','haha.' + ext);
                 document.body.appendChild(eleLink);
                 eleLink.click();
                 document.body.removeChild(eleLink);
             },
     },
     mounted(){
-        this.getData();
+        // this.getData();
         this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变').then(res=>{
-            console.log('res',res)
-        })
+            console.log('res',res);
+        });
         // console.log(this.$store.state.counter.fileListSelect);
         console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
-        console.log(gbk().encode('attachment;filename=filename我.xlsx'))
-        this.handlerRouter()
+        console.log(gbk().encode('attachment;filename=filename我.xlsx'));
+        this.handlerRouter();
     },
     created(){
-        this.changeEvent(22222)
+        this.changeEvent(22222);
     },
     components:{
         bus,
     }
-}
+};
 </script>
 <style lang="scss" module>
     @mixin set-color($color){
-        color: $color
+        color: $color;
     }
     @function set-h($h){
         @return $h*2+px;

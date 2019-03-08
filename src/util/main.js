@@ -1,8 +1,8 @@
 export default {
-    handlerData(a){
-        console.log(a,222)
+    handlerData(){
+        // console.log(a,222);
     },
     openNewPage(){
-        console.log(333)
+        // console.log(333);
     }
-}
+};

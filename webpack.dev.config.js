@@ -5,7 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const threadLoader = require('thread-loader');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const EslintPluginVue= require('eslint-plugin-vue');
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HappyPack = require('happypack');
@@ -75,6 +76,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             Vue:'vue' // 下载vue
         }),
+        // new EslintPluginVue(),
         // new PrerenderSPAPlugin({
         //     // Required - The path to the webpack-outputted app to prerender.
         //     staticDir: path.join(__dirname, 'dist'),
@@ -149,7 +151,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: ['happypack/loader?id=babel'],
+                use: ['happypack/loader?id=babel','eslint-loader'],
                 exclude: /node_modules/,
                 include:[path.join(__dirname , 'src'),path.join(__dirname ,'node_modules/vue-socket.io')]
             },

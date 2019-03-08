@@ -14,12 +14,12 @@ export default {
     data(){
         return {
 
-        }
+        };
     },
     components:{
         SideBar
     }
-}
+};
 </script>
 <style lang="scss" module>
     .reception-portal{
