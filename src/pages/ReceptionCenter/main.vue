@@ -127,12 +127,26 @@ export default {
 }
 </script>
 <style lang="scss" module>
-    .test{
-        color:blue;
-        font-size:20px;
-        font-weight: bold;
+    @mixin set-color($color){
+        color: $color
     }
-    
+    @function set-h($h){
+        @return $h*2+px;
+    }
+    .error{
+        display: block;
+        border:1px solid red;
+    }
+    .test{
+        @include set-color(blue);
+        @extend .error;
+        //以上二者都可以使用相同的样式 编译后的结果有些不一样 @extend不能传递参数 .a,.b{color:red}    @include为.a{color:red} .b{color:red}
+        font: {
+            size:20px;
+            weight:bold;
+        }
+        height:set-h(200);
+    }
 </style>
 <style  scoped>
     .el-input{

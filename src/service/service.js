@@ -15,7 +15,7 @@ axios.defaults.validateStatus=(status)=>{
 
 const TIME_OUT=50000;
 
-const mip_base_prefix = `http://10.73.175.108:8001`;
+const mip_base_prefix = `http://localhost:8001`;
 
 const base_axios_options = {
     // withCredentials: true,

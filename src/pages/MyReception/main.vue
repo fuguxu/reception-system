@@ -6,7 +6,7 @@
 </template>
 <script>
 import {mipModuleApi} from '../../service/service';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 export default {
     data(){
         return {
