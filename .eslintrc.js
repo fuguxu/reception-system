@@ -614,7 +614,7 @@ module.exports = {
         'no-undef-init': 2,
 
         // 禁止访问未定义的变量或方法
-        'no-undef': 2,
+        'no-undef': 0,
 
         // 禁止使用 undefined，如需判断一个变量是否为 undefined，请使用 typeof a === 'undefined'
         'no-undefined': 2,

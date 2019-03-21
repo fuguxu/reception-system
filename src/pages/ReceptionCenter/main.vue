@@ -118,6 +118,7 @@ export default {
         console.log(this.$store.getters['counter/FILE_LIST_SELECT']);
         console.log(gbk().encode('attachment;filename=filename我.xlsx'));
         this.handlerRouter();
+
     },
     created(){
         this.changeEvent(22222);

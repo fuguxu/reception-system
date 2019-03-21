@@ -28,8 +28,8 @@ const cssModuleOption = {
 const DEV = env === 'local';
 module.exports = {
     entry: {
-        main: ['babel-polyfill', path.join(__dirname, './src/entry/main.js')],
-        core: ['vue', 'vue-router', 'vue-i18n']
+        main: [path.join(__dirname, './src/entry/main.js')],
+        core: ['vue', 'vue-router']
     },
     output: {
         path: path.join(__dirname, './dist'),
@@ -65,7 +65,7 @@ module.exports = {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
-            Vue: 'vue' // 下载vue
+            Vue: [path.resolve('node_modules/vue/dist/vue.esm.js'),'default'] // 下载vue
         }),
 
         new HappyPack({
