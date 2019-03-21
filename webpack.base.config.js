@@ -8,6 +8,7 @@ const env = process.env.NODE_ENV;
 const HappyPack = require('happypack');
 const threadLoader = require('thread-loader');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
+const FileListPlugin = require('./webpackPlugin/fileListPlugin');
 threadLoader.warmup({
     // pool options, like passed to loader options
     // must match loader options to boot the correct pool
@@ -39,7 +40,9 @@ module.exports = {
 
     resolve: {
         extensions: ['.js', '.vue', '.css', '.png', '.jpg'],
-        alias: {}
+        alias: {
+            '@':path.resolve(__dirname,'src')
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -57,6 +60,7 @@ module.exports = {
             __UAT__: env === 'uat',
             __PROD__: env === 'prod'
         }),
+        new FileListPlugin({text:'我是手写插件并传进去的参数'}),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),

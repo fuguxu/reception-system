@@ -23,7 +23,7 @@
     </div>
 </template>
 <script>
-import {mipModuleApi} from '../../service/service';
+import {mipModuleApi} from '@/service/service';
 import gbk from '../../util/gbk';
 import bus from './bus.vue';
 export default {
@@ -110,7 +110,7 @@ export default {
             },
     },
     mounted(){
-        // this.getData();
+        this.getData();
         this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变').then(res=>{
             console.log('res',res);
         });
