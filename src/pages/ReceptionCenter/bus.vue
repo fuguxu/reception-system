@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="$style['bus-class']">
         <span>bus组件</span>
         <test v-bind="$attrs"  v-on="$listeners"></test>
     </div>
@@ -21,3 +21,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" module>
+    .bus-class{
+        font-size: 30px;
+    }
+</style>

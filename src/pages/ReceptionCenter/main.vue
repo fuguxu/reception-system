@@ -5,6 +5,7 @@
         <el-input v-model="form.name" placeholder="请输入name"></el-input>
         <el-input v-model="form.age" placeholder="请输入age"></el-input>
         <el-button @click="add" type="primary">增加数据</el-button><br /><br />
+        <i class="icon el-icon-info"></i>
         <ul>
             <li v-for="(item,index) in nodeDate" :key="index">
                 <span>
