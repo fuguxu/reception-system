@@ -17,6 +17,8 @@
                 <span style="cursor:pointer" v-else @click="save(item)">保存</span>
             </li>
         </ul>
+        <div :class="$style.global">我是全局变量的颜色</div>
+        <div v-html="html"></div>
         <bus a="a" b="b" @change="changeEvent"></bus>
         <addFunc :num1="5" :num2="7"></addFunc>
         <fuButton></fuButton>
@@ -34,7 +36,8 @@ export default {
                age:'',
                time:new Date()
            },
-           nodeDate:[]
+           nodeDate:[],
+           html:`<span style="color:#000;">我是v-html内容</span>`
         };
     },
     methods:{
@@ -149,9 +152,15 @@ export default {
         }
         height:set-h(200);
     }
+    .global{
+        color:$globalColor;
+    }
 </style>
 <style  scoped>
     .el-input{
         width:150px;
+    }
+    .htmlClass{
+        color:#000;
     }
 </style>

@@ -21,9 +21,10 @@ threadLoader.warmup({
     ]);
 const cssModuleOption = {
     modules: true,
+    localIdentName: '[path][name]__[local]--[hash:base64:5]',
     cssModules: {
-        localIdentName: '[path][name]__[local]---[hash:base64:5]',
-        camelCase: true
+        camelCase: true,
+        sourceMaps:true
     },
 };
 const DEV = env === 'local';
@@ -142,8 +143,10 @@ module.exports = {
                         options: cssModuleOption
                     },
                     {
-                        loader: 'sass-loader',
-                        options: cssModuleOption
+                        loader: 'sass-loader',// sass-loader 也支持一个 data 选项，这个选项允许你在所有被处理的文件之间共享常见的变量，而不需要显式地导入它们：
+                        options: Object.assign({},cssModuleOption,{
+                            data:'$globalColor: red;' // // 你也可以从一个文件读取，例如 `variables.scss`
+                        })
                     },
                 ]
             },
