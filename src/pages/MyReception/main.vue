@@ -2,6 +2,7 @@
     <div>
        <input type="file" name="file" id="file" @change="changeFile">
         <div>我是dev分支增加的内容，改一下啊看看</div>
+        <div>cherry pick one</div>
     </div>
 </template>
 <script>
