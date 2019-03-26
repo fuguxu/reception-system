@@ -37,7 +37,7 @@ export default {
                time:new Date()
            },
            nodeDate:[],
-           html:`<span style="color:#000;">我是v-html内容</span>`
+           html:`<span style="color:#000;">我是v-html内容，来自master的修改</span>`
         };
     },
     methods:{
