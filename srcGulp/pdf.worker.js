@@ -884,12 +884,16 @@
                             var value = this.httpHeaders[property];
                             void 0 !== value && xhr.setRequestHeader(property, value)
                         }
-                        xhr.withCredentials = false;//对象存储那边要求为false
+                        
+                        var statusExt = ['xls','xlsx'];
                         var herf=this.url.split('?')[1].split('&');
                         for(var key in herf){
                             var keyValue=herf[key].split('=');
                             if(keyValue.indexOf('ossSign')>-1){
                                 xhr.setRequestHeader("OSS-SIGN", keyValue[1]);
+                            }
+                            if(keyValue[0]=='ext'&&statusExt.indexOf(keyValue[1].toLowerCase())==-1){
+                                xhr.withCredentials = false;//对象存储那边要求为false
                             }
                         }
                         if (this.isHttp && "begin" in args && "end" in args) {

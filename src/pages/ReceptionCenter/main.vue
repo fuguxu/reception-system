@@ -17,7 +17,7 @@
                 <span style="cursor:pointer" v-else @click="save(item)">保存</span>
             </li>
         </ul>
-        <div :class="$style.global">我是全局变量的颜色</div>
+        <div class="global" :class="$style.global" v-classTest>我是全局变量的颜色</div>
         <div v-html="html"></div>
         <bus a="a" b="b" @change="changeEvent"></bus>
         <addFunc :num1="5" :num2="7"></addFunc>
@@ -111,6 +111,16 @@ export default {
                 eleLink.click();
                 document.body.removeChild(eleLink);
             },
+    },
+    directives:{
+        classTest:{
+            inserted(el){
+                let className=el.className;
+                el.className=`${className} hh kk`
+                console.log(el.className)
+                console.log(el.classList)
+            }
+        }
     },
     mounted(){
         this.getData();
