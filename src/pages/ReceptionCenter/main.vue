@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.test">
+    <div :class="bbbb.test">
         <el-button @click="down">下载</el-button>
         <!-- <input class="containers left" type="number" name="containers" v-model="containers" placeholder="请输入"> -->
         <el-input v-model="form.name" placeholder="请输入name"></el-input>
@@ -17,9 +17,17 @@
                 <span style="cursor:pointer" v-else @click="save(item)">保存</span>
             </li>
         </ul>
-        <div class="global" :class="$style.global" v-classTest>我是全局变量的颜色</div>
+        <div class="global" :class="bbbb.global" v-classTest>我是全局变量的颜色</div>
         <div v-html="html"></div>
         <bus a="a" b="b" @change="changeEvent"></bus>
+        <test>
+            <template #default="slotProps">
+                <div>{{slotProps.slotNum}}</div>
+            </template>
+            <template #test="slotProps">
+                <div>测试slot</div>
+            </template>
+        </test>
         <addFunc :num1="5" :num2="7"></addFunc>
         <fuButton></fuButton>
     </div>
@@ -28,6 +36,7 @@
 import {mipModuleApi} from '@/service/service';
 import gbk from '../../util/gbk';
 import bus from './bus.vue';
+import test from './test.vue';
 export default {
     data(){
         return {
@@ -138,10 +147,11 @@ export default {
     },
     components:{
         bus,
+        test
     }
 };
 </script>
-<style lang="scss" module>
+<style lang="scss" module="bbbb">
     @mixin set-color($color){
         color: $color;
     }

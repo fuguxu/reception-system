@@ -13,7 +13,7 @@ import vueNpmStudy from 'vue-npm-study';
 let {addFunc,fuButton} = vueNpmStudy;
 Vue.use(addFunc);
 Vue.use(fuButton);
-
+Window.Vue = global.Vue = Vue;
 Vue.prototype.AppUtil = AppUtil;
 
 // Vue.use(new VueSocketio({   //实时通讯 聊天室
