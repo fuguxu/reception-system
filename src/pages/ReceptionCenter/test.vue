@@ -13,21 +13,21 @@ export default {
     data() {
         return {
             slotNum:10
-        }
+        };
     },
     mounted(){
-        console.log(this.$attrs)
-        console.log(this.$listeners)
+        console.log(this.$attrs);
+        console.log(this.$listeners);
         // this.$emit('change','哈哈')
-        for(let event in this.$listeners){
-            console.log(event)
-            this.$emit(event,'哈哈')
+        for (let event in this.$listeners){
+            console.log(event);
+            this.$emit(event,'哈哈');
         }
     },
     computed:{
         testState(){
-            return testState
+            return testState;
         }
     }
-}
+};
 </script>

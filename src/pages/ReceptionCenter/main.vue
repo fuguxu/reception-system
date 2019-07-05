@@ -4,7 +4,7 @@
         <!-- <input class="containers left" type="number" name="containers" v-model="containers" placeholder="请输入"> -->
         <el-input v-model="form.name" placeholder="请输入name"></el-input>
         <el-input v-model="form.age" placeholder="请输入age"></el-input>
-        <el-button @click="add" type="primary">增加数据</el-button><br /><br />
+        <el-button @click="add" type="primary">增加数据1111</el-button><br /><br />
         <i class="icon el-icon-info"></i>
         <ul>
             <li v-for="(item,index) in nodeDate" :key="index">
@@ -17,7 +17,7 @@
                 <span style="cursor:pointer" v-else @click="save(item)">保存</span>
             </li>
         </ul>
-        <div class="global" :class="bbbb.global" v-classTest>我是全局变量的颜色</div>
+        <div class="global" :class="bbbb.global" v-classTest>我是全局变量的颜色222</div>
         <div v-html="html"></div>
         <bus a="a" b="b" @change="changeEvent"></bus>
         <test>
@@ -124,14 +124,15 @@ export default {
     directives:{
         classTest:{
             inserted(el){
-                let className=el.className;
-                el.className=`${className} hh kk`
-                console.log(el.className)
-                console.log(el.classList)
+                let className = el.className;
+                el.className = `${className} hh kk`;
+                console.log(el.className);
+                console.log(el.classList);
             }
         }
     },
     mounted(){
+        console.log(this);
         this.getData();
         this.$store.dispatch('counter/FILE_LIST_SELECT','初始化改变').then(res=>{
             console.log('res',res);
@@ -144,6 +145,7 @@ export default {
     },
     created(){
         this.changeEvent(22222);
+        console.log([...[123,34],...[3,6]]);
     },
     components:{
         bus,

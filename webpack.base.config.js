@@ -9,6 +9,7 @@ const HappyPack = require('happypack');
 const threadLoader = require('thread-loader');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const FileListPlugin = require('./webpackPlugin/fileListPlugin');
+const WatchFilePlugin = require('./webpackPlugin/watchFilePlugin');
 threadLoader.warmup({
     // pool options, like passed to loader options
     // must match loader options to boot the correct pool
@@ -62,6 +63,7 @@ module.exports = {
             __PROD__: env === 'prod'
         }),
         new FileListPlugin({text:'我是手写插件并传进去的参数'}),
+        new WatchFilePlugin({}),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),

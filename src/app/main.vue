@@ -7,10 +7,10 @@
 export default {
     data(){
         return {
-            msg:'hello world'
-        }
+            msg:'hello world2222'
+        };
     }
-}
+};
 </script>
 <style lang="scss" scoped>
     #app-reception{
